@@ -1,0 +1,17 @@
+version: '2'
+volumes:
+ dbdata:
+
+services:
+ mysql:
+  container_name: mysql
+  build:
+   context: ./
+   dockerfile: mysql-dockerfile
+  volumes:
+    - dbdata:/var/lib/mysql
+  restart: always
+  environment:
+    - MYSQL_ROOT_PASSWORD=4400MYsql!
+  ports:
+    - "3306:3306"

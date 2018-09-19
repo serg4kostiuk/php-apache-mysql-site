@@ -1,0 +1,10 @@
+FROM mysql:5.7
+WORKDIR /dockertest
+
+ENV MYSQL_ROOT_PASSWORD="4400MYsql!"
+
+COPY mysqltest.sh /dockertest/mysqltest.sh
+RUN cd /dockertest/ && chmod +x mysqltest.sh
+
+EXPOSE 3306 33060
+CMD ["mysqld"]
