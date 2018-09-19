@@ -7,7 +7,7 @@ services:
   container_name: mysql
   build:
    context: ./
-   dockerfile: mysql-dockerfile
+   dockerfile: mysql-test
   volumes:
     - dbdata:/var/lib/mysql
   restart: always
