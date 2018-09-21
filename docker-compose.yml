@@ -1,0 +1,40 @@
+version: '2'
+
+volumes:
+  dbdata:
+    
+services:
+
+  #MYSQL-DB
+  mysql:
+    container_name: mysql-test-001
+    build:
+      context: ./mysql
+      dockerfile: Dockerfile
+    volumes:
+    - dbdata:/var/lib/mysql
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=4400MYsql!
+    ports:
+      - "3306:3306"
+    
+    
+  #PHP-APACHE          
+  php-apache:
+    build:
+      context: ./php-apache
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+  #deploy:
+    #build:
+      #context: ./deploy
+      #dockerfile: Dockerfile
+    #volumes:
+      #- "./web/src:/app/src"
+    #depends_on:
+      #- php-apache
+      #- mysql
