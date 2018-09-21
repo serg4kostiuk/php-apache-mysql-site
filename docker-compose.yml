@@ -1,0 +1,32 @@
+version: '2'
+services:
+
+  #MYSQL-DB
+  mysql:
+    build:
+      context: ./mysql
+      dockerfile: Dockerfile
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=4400MYsql!
+    restart: always
+
+  #PHP-APACHE          
+  php-apache:
+    build:
+      context: ./php-apache
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+  #deploy:
+    #build:
+      #context: ./deploy
+      #dockerfile: Dockerfile
+    #volumes:
+      #- "./web/src:/app/src"
+    #depends_on:
+      #- php-apache
+      #- mysql
