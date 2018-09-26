@@ -1,1 +1,2 @@
 .my.cnf
+/mysql/docker-entrypoint.sh
