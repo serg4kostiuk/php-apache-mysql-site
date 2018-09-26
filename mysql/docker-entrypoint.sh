@@ -8,7 +8,7 @@ if [ -f /root/.my.cnf ]; then
 	mysql -e "FLUSH PRIVILEGES;"
 	exit
 
-# If /root/.my.cnf doesn't exist then it'll ask for root password	
+# If /root/.my.cnf doesn't exist then it'll ask for root password
 else
 	echo "Please enter root user MySQL password!"
 	read rootpasswd
